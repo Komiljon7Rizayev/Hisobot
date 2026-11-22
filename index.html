@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hodimlar hisoboti</title>
+  <meta name="theme-color" content="#1f6feb">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="icon.svg" alt="" width="32" height="32">
+      <h1>Hodimlar hisoboti</h1>
+    </div>
+    <div class="actions">
+      <span id="mode" class="mode" title="Ma'lumot qayerda saqlanmoqda"></span>
+      <button id="installBtn" class="btn ghost" hidden>⬇ O'rnatish</button>
+      <button id="addBtn" class="btn primary">+ Hodim qo'shish</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="stats">
+      <div class="stat"><span class="label">Hodimlar</span><span id="sCount" class="value">0</span></div>
+      <div class="stat"><span class="label">O'rtacha bajarilish</span><span id="sAvg" class="value">0%</span></div>
+      <div class="stat"><span class="label">Tugatganlar (100%)</span><span id="sDone" class="value">0</span></div>
+      <div class="stat"><span class="label">Orqada qolganlar (&lt;50%)</span><span id="sLow" class="value">0</span></div>
+    </section>
+
+    <section class="toolbar">
+      <input id="search" type="search" placeholder="Ism, lavozim yoki vazifa bo'yicha qidirish…">
+      <select id="sort">
+        <option value="pct-desc">Foiz: yuqoridan pastga</option>
+        <option value="pct-asc">Foiz: pastdan yuqoriga</option>
+        <option value="name">Ism bo'yicha (A–Z)</option>
+        <option value="updated">Oxirgi yangilangan</option>
+      </select>
+    </section>
+
+    <section id="grid" class="grid" aria-live="polite"></section>
+    <p id="empty" class="empty" hidden>Hozircha hodim yo'q. «+ Hodim qo'shish» tugmasini bosing.</p>
+  </main>
+
+  <dialog id="dlg">
+    <form id="form" method="dialog">
+      <h2 id="dlgTitle">Hodim qo'shish</h2>
+      <div class="photo-pick">
+        <img id="photoPreview" alt="Rasm" src="">
+        <label class="btn ghost">Rasm tanlash
+          <input id="photoInput" type="file" accept="image/*" hidden>
+        </label>
+      </div>
+      <label>F.I.Sh. <input id="fName" required maxlength="80"></label>
+      <label>Lavozimi <input id="fPos" maxlength="80"></label>
+      <label>Bajaradigan ishi (vazifa) <textarea id="fTask" rows="2" maxlength="300"></textarea></label>
+      <label>Bajarilish foizi: <b id="fPctOut">0%</b>
+        <input id="fPct" type="range" min="0" max="100" step="5" value="0">
+      </label>
+      <div class="dlg-actions">
+        <button type="button" id="delBtn" class="btn danger" hidden>O'chirish</button>
+        <span class="spacer"></span>
+        <button type="button" id="cancelBtn" class="btn ghost">Bekor qilish</button>
+        <button type="submit" class="btn primary">Saqlash</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="config.js"></script>
+  <script src="app.js" type="module"></script>
+</body>
+</html>

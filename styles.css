@@ -1,0 +1,61 @@
+:root {
+  --bg: #f4f6fa; --card: #fff; --text: #1b2330; --muted: #6b7686; --line: #e3e7ee;
+  --primary: #1f6feb; --danger: #d1242f; --green: #1a7f37; --amber: #bf8700; --red: #cf222e;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0f141b; --card: #171d26; --text: #e6edf3; --muted: #8b96a5; --line: #2a3340; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--text); }
+
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 14px 24px; background: var(--card); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5; }
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand h1 { font-size: 20px; margin: 0; }
+.actions { display: flex; align-items: center; gap: 8px; }
+.mode { font-size: 12px; padding: 4px 10px; border-radius: 999px; background: var(--bg); color: var(--muted); border: 1px solid var(--line); }
+.mode.online { color: var(--green); border-color: var(--green); }
+
+main { max-width: 1200px; margin: 0 auto; padding: 20px 24px 40px; }
+
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.stat { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; }
+.stat .label { font-size: 13px; color: var(--muted); }
+.stat .value { font-size: 26px; font-weight: 600; }
+
+.toolbar { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.toolbar input, .toolbar select { padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--text); font: inherit; }
+.toolbar input { flex: 1; min-width: 220px; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px;
+  cursor: pointer; transition: box-shadow .15s, transform .15s; }
+.card:hover { box-shadow: 0 6px 18px rgba(0,0,0,.08); transform: translateY(-1px); }
+.card .head { display: flex; gap: 12px; align-items: center; }
+.avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; background: var(--bg); flex-shrink: 0; border: 2px solid var(--line); }
+.avatar.initials { display: grid; place-items: center; font-weight: 600; font-size: 22px; color: #fff; }
+.card .name { font-weight: 600; font-size: 16px; }
+.card .pos { color: var(--muted); font-size: 13px; }
+.card .task { font-size: 14px; min-height: 20px; }
+.bar { height: 10px; background: var(--bg); border-radius: 999px; overflow: hidden; border: 1px solid var(--line); }
+.bar > span { display: block; height: 100%; border-radius: 999px; transition: width .4s; }
+.pct-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; color: var(--muted); }
+.pct-row b { font-size: 18px; }
+.empty { text-align: center; color: var(--muted); margin-top: 40px; }
+
+.btn { border: 1px solid var(--line); background: var(--card); color: var(--text); padding: 8px 14px; border-radius: 8px; font: inherit; cursor: pointer; }
+.btn.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+.btn.danger { color: var(--danger); border-color: var(--danger); }
+.btn.ghost:hover { background: var(--bg); }
+
+dialog { border: none; border-radius: 14px; padding: 0; width: min(440px, 94vw); background: var(--card); color: var(--text); }
+dialog::backdrop { background: rgba(0,0,0,.4); }
+#form { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+#form h2 { margin: 0 0 4px; font-size: 18px; }
+#form label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
+#form input:not([type=range]):not([type=file]), #form textarea { padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; font: inherit; background: var(--bg); color: var(--text); }
+.photo-pick { display: flex; align-items: center; gap: 14px; }
+.photo-pick img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; background: var(--bg); border: 2px solid var(--line); }
+.photo-pick label { flex-direction: row !important; color: var(--text) !important; }
+.dlg-actions { display: flex; gap: 8px; margin-top: 6px; }
+.spacer { flex: 1; }
